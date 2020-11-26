@@ -1,0 +1,111 @@
+.btn-outline-primary-check {
+    color: #007bff;
+    background-color: white;
+    background-image: none;
+    border-color: #007bff;
+}
+
+.btn-primary-check {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-outline-secondary-check {
+    color: #6c757d;
+    background-color: white;
+    background-image: none;
+    border-color: #6c757d;
+}
+
+.btn-outline-dark-check {
+    background-color: white;
+    color: #343a40;
+    border-color: #343a40;
+}
+
+.btn-check {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.error-msj {
+    color:red;
+    font-size:13px;
+    font-weight: bold;
+}
+
+.access .nav-pills .nav-link {
+    border-radius: 0 !important;
+}
+
+.access .nav-pills .nav-link.active {
+    color:#616161 !important;
+    background-color: #E0E0E0;
+    font-weight: bold;
+}
+
+.access .nav-link {
+    border-bottom:1px solid #EFEFEF
+}
+
+/*.select2-selection__rendered {
+    font-size: 10px;
+}
+.select2-results__option
+{
+    font-size: 11px;
+    padding: 3px;
+}
+.select2-results__group
+{
+    font-size: 12px;
+    background: #F3F3F3;
+}*/
+
+.select2-container {
+    /*width:100% !important;*/
+}
+
+.select2-container .select2-selection--single .select2-selection__rendered {
+    padding-left: 0px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 20px;
+}
+
+.select2-selection {
+    height:33px !important
+}
+
+.select2-search__field {
+    height:30px !important
+}
+
+.select2-selection__rendered {
+    font-size: 14px;
+}
+.select2-results__option
+{
+    font-size: 13px;
+    padding: 3px !important;
+    padding-left:6px !important
+}
+
+.input-group .select2 {
+    width:90% !important
+}

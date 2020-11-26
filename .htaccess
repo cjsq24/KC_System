@@ -1,0 +1,12 @@
+#eliminar la vista de datos al publico
+Options +FollowSymLinks
+#Options All -Indexes
+
+#reescribir URL
+RewriteEngine on
+
+
+#url dinamicas para las Vistas         
+Rewriterule ^Vistas/(\D*)(|/([0-9])*)$ Vistas/visPrincipal.php?Url=$&Modulo=$&Menu=$&VentPadre=$&Tema=$
+
+
