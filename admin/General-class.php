@@ -104,5 +104,19 @@
             ';
             return $return;
         }
+
+        //Cambia el formato de fecha, de español a inglés, para recibirlo en la base de datos
+        public function formatDateSpa2Eng($date) {
+            $valueOne = explode('/', $date);
+            $valueTwo = explode('-', $date);
+            $value = (is_array($valueOne) && count($valueOne) == 3) ? $valueOne : ((is_array($valueTwo) && count($valueTwo) == 3) ? $valueTwo : null);
+
+            if ($value != null && checkdate($value[1], $value[0], $value[2])) {
+                //Retorno la fecha en formato inglés (compatible con la base de datos).
+                return $value[2] . '-' . $value[1] . '-' . $value[0];
+            } else {
+                return '0000-00-00';
+            }
+        }
 	}
 ?>

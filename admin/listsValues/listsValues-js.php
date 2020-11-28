@@ -1,6 +1,6 @@
 <script>
     let lisV = formID;
-    var rowTable = { name:'Nombre', parent:'Padre', list:'Lista' };
+    var rowTable = { name:'Nombre', abbreviation: 'Abrev', parent:'Padre', list:'Lista' };
     var rowTooltip = { parent:'Lista Valor Padre', list:'Lista a la que pertenece' };
 
     $(document).ready(function() {

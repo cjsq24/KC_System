@@ -7,7 +7,7 @@
 		}*/
 
 		function finalFormDiv($classLab, $sizeDiv) {
-            $imprimir = '';
+				$imprimir = '';
 			$imprimir .= $this->statusDiv($classLab, $sizeDiv);
 			$imprimir .= $this->formBtn();
 			return $imprimir;
@@ -25,7 +25,7 @@
 		}
 
 		function searchModal($type) {
-            global $Form, $paramSelect;
+				global $Form, $paramSelect;
 			if( $type == "start" )
 			{
 				$imprimir = '
@@ -44,16 +44,16 @@
 										</button>
 									</div>
 									<div class="modal-body">
-                                        <div id="alertSearch-div" class="alert alert-danger alert-dismissible fade show" role="alert" style="display:none">
-                                            Debe seleccionar algún dato para filtrar
-                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
+										<div id="alertSearch-div" class="alert alert-danger alert-dismissible fade show" role="alert" style="display:none">
+											Debe seleccionar algún dato para filtrar
+											<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
 										<div class="form-row">
 											<div class="form-group col">' . 
 												$Form->label("statusS", "Estatus") . 
-												$Form->select( ["name-id"=>"statusS", "popover-msj"=>"Seleccione un estatus para filtrar registros"], ["1"=>"ACTIVADO", "0"=>"DESACTIVADO"], "search" ) . '
+												$Form->select( ["name-id"=>"statusS", "selected"=>"1", "popover-msj"=>"Seleccione un estatus para filtrar registros"], ["1"=>"ACTIVADO", "0"=>"DESACTIVADO"], "search" ) . '
 											</div>
 											<div class="form-group col">
 												' . $Form->label("paramS", "Parámetros") . '
@@ -83,16 +83,16 @@
 										<div class="modal-footer">
 										<!-- BOTONES DE LA VENTANA-->
 										<div class="form-group btn-center">
-                                            <button type="button" id="closeModalSearch-btn" class="btn btn-secondary">
-                                                <span class="fa fa-close"></span> Cerrar
-                                            </button>
-                                            <button type="button" id="resetSearch-btn" class="btn btn-secondary">
-                                                <span class="fa fa-undo"></span> Resetear
-                                            </button>
-                                            <button type="button" id="search-btn" class="btn btn-info">
-                                                <span class="fa fa-search"></span> Buscar
-                                            </button>
-                                        </div>
+														  <button type="button" id="closeModalSearch-btn" class="btn btn-secondary">
+																<span class="fa fa-close"></span> Cerrar
+														  </button>
+														  <button type="button" id="resetSearch-btn" class="btn btn-secondary">
+																<span class="fa fa-undo"></span> Resetear
+														  </button>
+														  <button type="button" id="search-btn" class="btn btn-info">
+																<span class="fa fa-search"></span> Buscar
+														  </button>
+													 </div>
 									</div>
 								</div>
 							</div>
@@ -104,19 +104,19 @@
 		}
 
 		public function sectionTop($menu) {
-            global $Access;
-            $actions = $Access->getActions($_SESSION['idProfile'], $menu['link']);
+				global $Access;
+				$actions = $Access->getActions($_SESSION['idProfile'], $menu['link']);
 			return '
-                <div class="card border-secondary mb-3">
-                    <div class="card-header"> <i class="fa '.$menu['icon'].'"></i> <span id="formTitle-span"></span> '.$menu['name'].' </div>
-                    <div class="card-body">
-                        <div id="search-div">
-                            <div id="buttonsGroup-div" class="pull-right btn-group" style="padding-bottom:15px">
-                                <button type="button" id="openModalSearch-btn" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" data-trigger="hover" title="FILTRAR">
-                                    <span class="fa fa-search bigger-130"></span>
-                                </button>
-                                ' . $actions['normal'] . '
-                            </div>
+					 <div class="card border-secondary mb-3">
+						  <div class="card-header"> <i class="fa '.$menu['icon'].'"></i> <span id="formTitle-span"></span> '.$menu['name'].' </div>
+						  <div class="card-body">
+								<div id="search-div">
+									 <div id="buttonsGroup-div" class="pull-right btn-group" style="padding-bottom:15px">
+										  <button type="button" id="openModalSearch-btn" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" data-trigger="hover" title="FILTRAR">
+												<span class="fa fa-search bigger-130"></span>
+										  </button>
+										  ' . $actions['normal'] . '
+									 </div>
 			';
 		}
 
@@ -134,30 +134,30 @@
 											Pulse el botón Filtrar( <span class="fa fa-search"></span> ) para realizar una búsqueda
 										</td>
 									</tr>
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <td colspan="100" style="vertical-align: middle">
-                                            <div class="pull-left">
-                                                <span id="totalRecords-table"></span>
-                                            </div>
-                                            <div class="pull-right" style="height:31px">
-                                                <div class="input-group mb-3">
-                                                    <div class="input-group-prepend" id="back-table"></div>
-                                                    <div id="pages-table"></div>
-                                                    <div class="input-group-append" id="next-table"></div>
+										  </tbody>
+										  <tfoot>
+												<tr>
+													 <td colspan="100" style="vertical-align: middle">
+														  <div class="pull-left">
+																<span id="totalRecords-table"></span>
+														  </div>
+														  <div class="pull-right" style="height:31px">
+																<div class="input-group mb-3">
+																	 <div class="input-group-prepend" id="back-table"></div>
+																	 <div id="pages-table"></div>
+																	 <div class="input-group-append" id="next-table"></div>
 
-                                                    <select id="pageSize-sel" class="form-control form-control-sm" data-toggle="tooltip" data-placement="bottom" title="Tamaño de la página" style="border-color:gray">
-                                                        <option value="10" selected> 10 </option>
-                                                        <option value="15"> 15 </option>
-                                                        <option value="20"> 20 </option>
-                                                        <option value="25"> 25 </option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tfoot>
+																	 <select id="pageSize-sel" class="form-control form-control-sm" data-toggle="tooltip" data-placement="bottom" title="Tamaño de la página" style="border-color:gray">
+																		  <option value="10" selected> 10 </option>
+																		  <option value="15"> 15 </option>
+																		  <option value="20"> 20 </option>
+																		  <option value="25"> 25 </option>
+																	 </select>
+																</div>
+														  </div>
+													 </td>
+												</tr>
+										  </tfoot>
 							</table>
 						</div>
 				';
@@ -165,9 +165,9 @@
 			else if( $tipo == "end" ) {
 				return '</div>';
 			}
-        }
-        
-        public function sectionForm($tipo, $link = '') {
+		  }
+		  
+		  public function sectionForm($tipo, $link = '') {
 			if ($tipo == 'start') {
 				return '
 					<div class="form" style="display:none;" id="form-div">
@@ -178,73 +178,73 @@
 							</button>
 						</div>
 						
-                            
-                            <div id="formInput-div">
-                            <!--FORMULARIO-->
+									 
+									 <div id="formInput-div">
+									 <!--FORMULARIO-->
 				';
 			}
 			else if($tipo == 'end') {
 				return '
-                            </div>
-                        </div>
-                    </div>
+									 </div>
+								</div>
+						  </div>
 				';
 			}
-        }
-        
-        public function formBtn() {
-            return '
-                <div class="modal-footer">
-                    <div class="form-group">
-                        <button type="button" id="hideForm-btn" class="btn btn-primary">
-                            <a><span class="fa fa-arrow-left"></span> Volver</a>
-                        </button>
-                        <button type="button" id="send-btn" class="btn btn-success" style="display:none;"></button>
-                    </div>
-                </div>
-            ';
-        }
+		  }
+		  
+		  public function formBtn() {
+				return '
+					 <div class="modal-footer">
+						  <div class="form-group">
+								<button type="button" id="hideForm-btn" class="btn btn-primary">
+									 <a><span class="fa fa-arrow-left"></span> Volver</a>
+								</button>
+								<button type="button" id="send-btn" class="btn btn-success" style="display:none;"></button>
+						  </div>
+					 </div>
+				';
+		  }
 
-        public function formButtonsModal($link) {
-            return '
-                <br>
-                <div class="modal-footer">
-                    <div class="form-group">
-                        <button type="button" id="hideForm-btn" class="btn btn-primary hide-modal-form-btn" form-modal="'.$link.'">
-                            <a><span class="fa fa-arrow-left"></span> Cerrar</a>
-                        </button>
-                        <button type="button" class="btn btn-success sendModal-btn">
-                            <i class="fa fa-save"></i> Registrar </i>
-                        </button>
-                    </div>
-                </div>
-            ';
-        }
+		  public function formButtonsModal($link) {
+				return '
+					 <br>
+					 <div class="modal-footer">
+						  <div class="form-group">
+								<button type="button" id="hideForm-btn" class="btn btn-primary hide-modal-form-btn" form-modal="'.$link.'">
+									 <a><span class="fa fa-arrow-left"></span> Cerrar</a>
+								</button>
+								<button type="button" class="btn btn-success sendModal-btn">
+									 <i class="fa fa-save"></i> Registrar </i>
+								</button>
+						  </div>
+					 </div>
+				';
+		  }
 
-        public function formStart($link, $hiddenID) {
-            global $formParent;
-            return '
-                <script> var formID = "'.$link.'"; </script>
-                <form name="'.$link.'" id="'.$link.'" class="form-horizontal" role="form" method="post" autocomplete="off">
-                    <input type="hidden" name="'.$hiddenID.'" id="'.$hiddenID.'" class="input-form fieldID">
-                    <input type="hidden" name="linkFolder" id="linkFolder" value="'.$link.'">
-                    <input type="hidden" id="action">
-                    <input type="hidden" name="status" id="status" class="input-form">
-                    <input type="hidden" id="formParent" value="'.$formParent.'">
-            ';
-        }
+		  public function formStart($link, $hiddenID) {
+				global $formParent;
+				return '
+					 <script> var formID = "'.$link.'"; </script>
+					 <form name="'.$link.'" id="'.$link.'" class="form-horizontal" role="form" method="post" autocomplete="off">
+						  <input type="hidden" name="'.$hiddenID.'" id="'.$hiddenID.'" class="input-form fieldID">
+						  <input type="hidden" name="linkFolder" id="linkFolder" value="'.$link.'">
+						  <input type="hidden" id="action">
+						  <input type="hidden" name="status" id="status" class="input-form">
+						  <input type="hidden" id="formParent" value="'.$formParent.'">
+				';
+		  }
 
-        public function formEnd($modal = false) {
-            global $classLab, $sizeDiv, $menu;
-            $return = '';
-            if (!$modal) {
-                $return .= $this->statusDiv($classLab, $sizeDiv) . $this->formBtn();
-            }
-            else if ($modal) {
-                $return .= $this->formButtonsModal($menu['link']);
-            }
-            $return .= '</form>';
-            return $return;
-        }
+		  public function formEnd($modal = false) {
+				global $classLab, $sizeDiv, $menu;
+				$return = '';
+				if (!$modal) {
+					 $return .= $this->statusDiv($classLab, $sizeDiv) . $this->formBtn();
+				}
+				else if ($modal) {
+					 $return .= $this->formButtonsModal($menu['link']);
+				}
+				$return .= '</form>';
+				return $return;
+		  }
 	}
 ?>

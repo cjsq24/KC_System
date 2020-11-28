@@ -36,6 +36,6 @@
 	require($linkFolder.'/'.$linkFolder.'-cont.php');
 
     fin:
-    $json = json_encode(compact('result', 'message', 'data'));
-	echo ($json);
+    echo json_encode(compact('result', 'message', 'data'));
+	//echo ($json);
 ?>

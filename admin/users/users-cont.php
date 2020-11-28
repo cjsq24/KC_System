@@ -1,6 +1,6 @@
 <?php
     $obj = new Users();    
-    for ($i = 0; $i < $contTags; $i ++) { $obj->{$tags[$i]} = $values[$i]; }
+    require('../Settings/php/GetValuesFormInController.php');
 
     $result = 'invalid_data';
     if (!$obj->validate($action, $_POST, $Validate, $field)) goto fin;

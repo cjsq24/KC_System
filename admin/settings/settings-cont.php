@@ -1,7 +1,7 @@
 <?php
 	$obj = new Settings();
     $obj->idSetting = 1;
-    for ($i = 0; $i < $contTags; $i ++) { $obj->{$tags[$i]} = $values[$i]; }
+    require('../Settings/php/GetValuesFormInController.php');
     //Security
     /*$obj->minLongPass   	 = $minLongPass;
     $obj->maxLongPass 		 = $maxLongPass;

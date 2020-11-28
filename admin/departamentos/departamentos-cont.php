@@ -1,6 +1,6 @@
 <?php
     $obj = new Departamentos();
-    for ($i = 0; $i < $contTags; $i ++) { $obj->{$tags[$i]} = $values[$i]; }
+    require('../Settings/php/GetValuesFormInController.php');
 
     $result = 'invalid_data';
     if (!$obj->validate($action, $_POST, $Validate, $field)) goto fin;
@@ -10,7 +10,7 @@
 		//VERIFICO SI EL NOMBRE EXISTE
 		case 'verify_if_exist':
             $result = ($obj->unique($field)) ? 'existe' : 'no_existe';
-            $message = 'Este nombre ya existe';
+            $message = 'Este valor ya existe';
 		break;
 		case 'create':
             //VERIFICO que el name no este registrado.

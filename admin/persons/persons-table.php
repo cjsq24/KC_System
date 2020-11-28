@@ -14,17 +14,25 @@
     $cityW = ($idCityS != '') ? " AND per.idCity = $idCityS" : "";
 	$Busqueda = "$aliasT.$paramS";
 
-	$sql = "SELECT per.*, 
+	$sql = "SELECT per.*,
+                CASE 
+                    WHEN per.dateBirth = '0000-00-00' then ''
+                    WHEN per.dateBirth = NULL then ''
+                    WHEN per.dateBirth <> '0000-00-00' then DATE_FORMAT(per.dateBirth, '%d/%m/%Y')
+                END
+                AS dateBirth,
                 concat(per.name, ' ', per.surname) AS names, 
                 cit.name AS city, 
                 sta.idListValue AS idState, 
                 sta.name AS state, 
                 cou.idListValue AS idCountry, 
-                cou.name AS country 
+                cou.name AS country,
+                doc.name AS documentType 
 		    FROM persons AS per 
-            INNER JOIN listsValues AS cit ON cit.idListValue = per.idCity 
-            INNER JOIN listsValues AS sta ON sta.idListValue = cit.idParent 
-            INNER JOIN listsValues AS cou ON cou.idListValue = sta.idParent 
+            LEFT JOIN listsValues AS cit ON cit.idListValue = per.idCity 
+            LEFT JOIN listsValues AS sta ON sta.idListValue = cit.idParent 
+            LEFT JOIN listsValues AS cou ON cou.idListValue = sta.idParent 
+            LEFT JOIN listsValues AS doc ON doc.idListValue = per.idDocumentType 
 		    WHERE $paramSearch per.status LIKE '$statusS%' $countryW $stateW $cityW";
 
 	//AQUÍ EJECUTO LAS CONSULTAS PARA LA PAGINACIÓN Y LA BÚSQUEDA.

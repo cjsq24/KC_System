@@ -36,8 +36,13 @@
         break;
         case 'listsValuesGeneral':
             $parentW = ($val > 0) ? " AND lisV.idParent = $val" : '';
+            $field = ($field == 'name') ? "lisV.name AS b" 
+                : (
+                    ($field == 'abbreviation') ? "lisV.abbreviation AS b" 
+                    : "concat(lisV.abbreviation, ' - ', lisV.name) AS b"
+                );
             $options = $General->getSetOptions(
-                "SELECT lisV.idListValue AS a, lisV.name AS b 
+                "SELECT lisV.idListValue AS a, $field 
                 FROM listsValues AS lisV 
                 INNER JOIN lists AS lis ON lis.idList = lisV.idList 
                 WHERE lis.keyName = '$keyName' $parentW 

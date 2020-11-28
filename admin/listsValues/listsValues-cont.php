@@ -1,16 +1,7 @@
 <?php
     $obj = new ListsValues();
-    for ($i = 0; $i < $contTags; $i ++) { $obj->{$tags[$i]} = $values[$i]; }
+    require('../Settings/php/GetValuesFormInController.php');
     $obj->idParent = ($_POST['idParent'] > 0) ? $_POST['idParent'] : 'NULL';
-
-    /*$obj->idListValue   = $idListValue;
-    $obj->idList        = $idList;
-    $obj->idParent      = ($idParent > 0) ? $idParent : 'NULL';
-    $obj->name      	= $name;
-    $obj->abbreviation  = $abbreviation;
-    $obj->position  	= $position;
-    $obj->description 	= $description;
-    $obj->status 		= $status;*/
 
     $result = 'invalid_data';
     if (!$obj->validate($action, $_POST, $Validate, $field)) goto fin;

@@ -1,11 +1,10 @@
 <?php
     $obj = new Lists();
-    $obj->idList        = $_POST['idList'];
+    require('../Settings/php/GetValuesFormInController.php');
     $obj->idParent      = ($_POST['idParent'] > 0) ? $_POST['idParent'] : 'NULL';
     $obj->name      	= mb_strtoupper($_POST['name'], 'UTF-8');
     $obj->keyName		= $_POST['keyName'];
     $obj->description 	= mb_strtoupper($_POST['description'], 'UTF-8');
-    $obj->status 		= $_POST['status'];
 
     $result = 'invalid_data';
     if (!$obj->validate($action, $_POST, $Validate, $field)) goto fin;
@@ -15,7 +14,7 @@
 		//VERIFICO SI EL NOMBRE EXISTE
 		case 'verify_if_exist':
             $result = ($obj->unique($field)) ? 'existe' : 'no_existe';
-            $message = 'Este campo ya existe';
+            $message = 'Este valor ya existe';
 		break;
 		case 'create':
             //VERIFICO que el name no este registrado.

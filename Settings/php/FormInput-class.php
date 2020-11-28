@@ -54,7 +54,7 @@
 			$class = ($tipo == "search") ? "input-search" : "input-form";
             $input = $this->setDataInput($input);
             if ($tipo == 'search') {
-                $options = '<option value="" selected>-</option>';
+                $options = '<option value="">-</option>';
                 unset($option['']);
             }
             else {
@@ -62,15 +62,15 @@
                     $tag    = array_keys($option);
                     $value  = array_values($option);
                     if ($tag[0] != '') {
-                        $options = '<option value="" selected>SELECCIONE</option>';
+                        $options = '<option value="">SELECCIONE</option>';
                     }
                     else {
-                        $options = '<option value="'.$tag[0].'" selected>'.$value[0].'</option>';
+                        $options = '<option value="'.$tag[0].'">'.$value[0].'</option>';
                         $st = 1;
                     }
                 }
                 else {
-                    $options = '<option value="" selected>SELECCIONE</option>';
+                    $options = '<option value="">SELECCIONE</option>';
                 }
             }
 			//$options = ($tipo == "search") ? '<option value="" selected> TODOS </option>' : '';
@@ -79,7 +79,8 @@
 				$tag = array_keys ($option);
 				$value = array_values ($option);
 				for ($i = $st; $i < count ($tag); $i ++) {
-					$options .= '<option value="' . $tag[$i] . '">' . $value[$i] . '</option>';
+                    $selected = (isset($input['selected']) && $tag[$i] == $input['selected']) ? 'selected' : '';
+					$options .= '<option value="' . $tag[$i] . '" '.$selected.'>' . $value[$i] . '</option>';
 				}
 			}
 			return '

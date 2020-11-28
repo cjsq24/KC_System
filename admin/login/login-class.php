@@ -36,14 +36,14 @@
                 $data['idUser'] = $dataUser['idUser'];
                 $userFailedAttemptsC = $this->getConfigValue('userFailedAttempts');
 
-                if ($dataUser['condition'] == '0') {
+                if ($dataUser['conditions'] == '0') {
                     $data['result'] = "changePassword";
                 }
-                else if ($dataUser['condition'] == '2') {
+                else if ($dataUser['conditions'] == '2') {
                     $data['result'] = "locked";
                 }
                 else if($dataUser['attempts'] >= $userFailedAttemptsC) {//BLOQUEO DE USUARIO POR INTENTO FALLIDO
-                    $sql = "UPDATE users SET condition = 2 WHERE idUser = ".$dataUser['idUser'];
+                    $sql = "UPDATE users SET conditions = 2 WHERE idUser = ".$dataUser['idUser'];
                     $this->exec($sql);
                     $data['result'] = "lockedByAttempts";
                 }	
@@ -159,7 +159,7 @@
             $endDate = date_format($date, 'Y-m-d');
             
             $sql = "INSERT INTO usersPasswords (idUser, password, startDate, endDate) VALUES ($this->idUser, '$newPassword', CURDATE(), '$endDate'); 
-            UPDATE users SET condition = '1' WHERE idUser = $this->idUser";
+            UPDATE users SET conditions = '1' WHERE idUser = $this->idUser";
             return ($this->exec($sql)) ? true : false;
         }
 

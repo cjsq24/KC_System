@@ -8,8 +8,8 @@
 <?= $Temp->formStart($menu['link'], 'idPerson') ?>
     <div class="form-row">
         <div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-6">
-            <?= $Form->label('idTypeDocument', 'Tipo de Documento') ?>
-            <?= $Form->select(['name-id'=>'idTypeDocument', 'attr'=>'tabindex="1" validate="required"'], []); ?>
+            <?= $Form->label('idDocumentType', 'Tipo de Documento') ?>
+            <?= $Form->select(['name-id'=>'idDocumentType', 'attr'=>'tabindex="1" validate="required"'], []); ?>
         </div>
         <div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-6">
             <?= $Form->label('idDocument', 'N° Documento') ?>

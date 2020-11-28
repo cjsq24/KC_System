@@ -18,7 +18,7 @@ function fAjax(action)
 	var str = $('#Form').serialize();
 	$.ajax(
 	{
-        cache: false, type: 'POST', dataType: 'json', url: 'admin/login/login-cont.php',
+        cache: false, type: 'POST', dataType: 'json', url: 'Admin/login/login-cont.php',
         data: str + '&action=' + action,
         success: function(r)
         {

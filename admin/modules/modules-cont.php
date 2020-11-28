@@ -1,6 +1,6 @@
 <?php
     $obj = new Modules();
-    for ($i = 0; $i < $contTags; $i ++) { $obj->{$tags[$i]} = $values[$i]; }
+    require('../Settings/php/GetValuesFormInController.php');
     $obj->idParent = ($_POST['idParent'] > 0) ? $_POST['idParent'] : 'NULL';
 
     $result = 'invalid_data';

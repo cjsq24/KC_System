@@ -26,7 +26,10 @@
 			for ($i = 0; $i < $cont; $i ++) {
 				$function = explode('|', $functions[$i]);
 				if ($function[0] == 'required') {
-					if ($values[$input[$i]] == '') return false;
+					if ($values[$input[$i]] == '') {
+						echo $values[$input[$i]] . ' requerido y vacío<br>';
+						return false;
+					}
 					
 					if (!empty($function[1])) {
 						$f = explode(':', $function[1]);
@@ -35,7 +38,10 @@
 							if (!$this->{$f[0]}($values[$input[$i]], $param[0], $param[1])) { echo $input[$i].'='.$values[$input[$i]]; return false; }
 							}
 							else {
-								if (!$this->{$f[0]}($values[$input[$i]])) { echo 'salgo2'; return false; }
+								if (!$this->{$f[0]}($values[$input[$i]])) { 
+									echo 'salgo2'; 
+									return false;
+								}
 							}
 						}
 				}
@@ -44,10 +50,14 @@
 						$f = explode(':', $function[0]);
 						if (!empty($f[1])) {
 							$param = explode(',', $f[1]);
-							if (!$this->{$f[0]}($values[$input[$i]], $param[0], $param[1])) return false;
+							if (!$this->{$f[0]}($values[$input[$i]], $param[0], $param[1])) {
+								return false;
+							}
 						}
 						else {
-							if (!$this->{$f[0]}($values[$input[$i]])) return false;
+							if (!$this->{$f[0]}($values[$input[$i]])) {
+								return false;
+							}
 						}
 					}
 				}
@@ -164,6 +174,24 @@
 			if(preg_match($pattern, $val) && (strlen($val) >= $min && strlen($val) <= $max))
 				return true;
 			else return false;
+		}
+
+		function dateSpa($date) {
+			$valueOne = explode('/', $date);
+			$valueTwo = explode('-', $date);
+			$value = (is_array($valueOne) && count($valueOne) == 3) ? $valueOne : ((is_array($valueTwo) && count($valueTwo) == 3) ? $valueTwo : null);
+			
+			if(count($value) == 3 && checkdate($value[1], $value[0], $value[2])){
+				return true;
+			}
+			return false;
+		}
+
+		function email($val) {
+			if (filter_var($val, FILTER_VALIDATE_EMAIL)) {
+				return true;
+			}
+			return false;
 		}
 
 		function fValidarCedula($Valor)

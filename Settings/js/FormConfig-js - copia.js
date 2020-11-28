@@ -69,7 +69,7 @@ function sendData(action, field = '')
     var values = new FormData(document.getElementById("Form"));
     values.append('field', field)
 	//var values = $('#Form').serialize();
-	request('../admin/controller.php', action, values, function(r,a) {
+	request('../Admin/controller.php', action, values, function(r,a) {
 		/*MENSAJES*/
 		/*SI LA OPERACION FUE EXITOSA, MUESTRO MENSAJE Y MUESTRO EL REGISTRO*/
 		if ((action == "create" || action == "update") && r.result == "success")

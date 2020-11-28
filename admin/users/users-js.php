@@ -28,7 +28,7 @@
             values.append('idUser', idUser);
             values.append('linkFolder', $('#linkFolder').val());
             values.append('conditions', conditions);
-            Form.request('../admin/controller.php', 'changeCondition', values, function(r, a) {
+            Form.request('../Admin/controller.php', 'changeCondition', values, function(r, a) {
                 if (r.result == 'success') {
                     let message = (conditions == '1') ? 'Se ha bloqueado el usuario' : 'El usuario ha sido desbloqueado';
                     swal('Operación exitosa', message, 'success');

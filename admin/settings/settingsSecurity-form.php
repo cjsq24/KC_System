@@ -67,9 +67,9 @@
                 <label class="form-check-label" for="gridRadios2"> No </label>
             </div>
         </div-->
-    </div>
+    <!--/div>
 
-    <div class="form-row">
+    <div class="form-row"-->
         <div class="form-group px-2 col-lg-4 col-md-4 col-sm-6">
             <label> C. Especiales </label>
             <div class="input-group mb-3">
@@ -105,14 +105,9 @@
                 </div>
             </div>
         </div>
-        <div class="form-group px-2 col-lg-3 col-md-4 col-sm-6">
+        <div class="form-group px-2 col-lg-2 col-md-4 col-sm-6">
             <label>Int. Fallidos</label>
-            <div class="input-group mb-3">
                 <input type="number" class="<?= $inpCls ?>" name="userFailedAttempts" id="userFailedAttempts" value="<?= $config['userFailedAttempts'] ?>">
-                <div class="input-group-append">
-                    <span class="input-group-text form-control-sm">Días Antes</span>
-                </div>
-            </div>
         </div>
     </div>
 
